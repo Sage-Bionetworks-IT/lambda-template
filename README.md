@@ -68,6 +68,10 @@ config/prod/my-lambda.yaml
 ```yaml
 template_path: "remote/my-lambda.yaml"
 stack_name: "my-lambda"
+stack_tags:
+  Department: "Platform"
+  Project: "Infrastructure"
+  OwnerEmail: "it@sagebase.org"
 hooks:
   before_launch:
     - !cmd "curl https://s3.amazonaws.com/essentials-awss3lambdaartifactsbucket-x29ftznj6pqw/my-lambda-repo/master/my-lambda.yaml --create-dirs -o templates/remote/my-lambda.yaml"

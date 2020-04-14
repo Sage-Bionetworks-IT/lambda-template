@@ -56,7 +56,7 @@ This requires the correct permissions to upload to bucket
 ```shell script
 sam package --template-file .aws-sam/build/template.yaml \
   --s3-bucket essentials-awss3lambdaartifactsbucket-x29ftznj6pqw \
-  --output-template-file .aws-sam/build/my-lambda.yaml
+  --output-template-file .aws-sam/build/lambda-template.yaml
 
 aws s3 cp .aws-sam/build/template.yaml s3://bootstrap-awss3cloudformationbucket-19qromfd235z9/my-lambda-repo/master
 ```
@@ -64,9 +64,9 @@ aws s3 cp .aws-sam/build/template.yaml s3://bootstrap-awss3cloudformationbucket-
 ## Install Lambda into AWS
 Create the following [sceptre](https://github.com/Sceptre/sceptre) file
 
-config/prod/my-lambda.yaml
+config/prod/lambda-template.yaml
 ```yaml
-template_path: "remote/my-lambda.yaml"
+template_path: "remote/lambda-template.yaml"
 stack_name: "my-lambda"
 stack_tags:
   Department: "Platform"
@@ -74,7 +74,7 @@ stack_tags:
   OwnerEmail: "it@sagebase.org"
 hooks:
   before_launch:
-    - !cmd "curl https://s3.amazonaws.com/essentials-awss3lambdaartifactsbucket-x29ftznj6pqw/my-lambda-repo/master/my-lambda.yaml --create-dirs -o templates/remote/my-lambda.yaml"
+    - !cmd "curl https://s3.amazonaws.com/essentials-awss3lambdaartifactsbucket-x29ftznj6pqw/my-lambda-repo/master/lambda-template.yaml --create-dirs -o templates/remote/lambda-template.yaml"
 ```
 
 Install the lambda using sceptre:

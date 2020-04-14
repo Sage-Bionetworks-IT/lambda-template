@@ -12,8 +12,6 @@ install:
   - export SAM_CLI_TELEMETRY=0
 stages:
   - name: validate
-  - name: test
-    if: branch = master AND type = push
   - name: deploy
     if: (tag =~ ^v) OR (branch = master AND type = push)
 jobs:
@@ -25,13 +23,6 @@ jobs:
         - pre-commit run --all-files
         - sam build
         - python -m pytest tests/ -v
-    - stage: test
-      script:
-        - sam build
-        - |
-          sam package --template-file .aws-sam/build/template.yaml \
-            --s3-bucket essentials-awss3lambdaartifactsbucket-x29ftznj6pqw \
-            --output-template-file .aws-sam/build/$REPO_NAME.yaml
     - stage: deploy
       script:
         - sam build

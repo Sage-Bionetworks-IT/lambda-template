@@ -36,20 +36,8 @@ Resources:
             Action:
               - sts:AssumeRole
       ManagedPolicyArns:
-        - !Ref LogsPolicy
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
 
-  LogsPolicy:     # policy to allow lambda to write logs to cloudwatch
-    Type: 'AWS::IAM::ManagedPolicy'
-    Properties:
-      PolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Action:
-              - logs:CreateLogGroup
-              - logs:CreateLogStream
-              - logs:PutLogEvents
-            Resource: "*"
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
@@ -60,6 +48,6 @@ Outputs:
   HelloWorldFunctionArn:
     Description: "Hello World Lambda Function ARN"
     Value: !GetAtt HelloWorldFunction.Arn
-  HelloWorldFunctionIamRoleArn:
+  HelloWorldFunctionRoleArn:
     Description: "Implicit IAM Role created for Hello World function"
     Value: !GetAtt FunctionRole.Arn

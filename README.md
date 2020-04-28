@@ -59,7 +59,7 @@ sam package --template-file .aws-sam/build/template.yaml \
   --s3-bucket essentials-awss3lambdaartifactsbucket-x29ftznj6pqw \
   --output-template-file .aws-sam/build/lambda-template.yaml
 
-aws s3 cp .aws-sam/build/template.yaml s3://bootstrap-awss3cloudformationbucket-19qromfd235z9/lambda-template/master/
+aws s3 cp .aws-sam/build/lambda-template.yaml s3://bootstrap-awss3cloudformationbucket-19qromfd235z9/lambda-template/master/
 ```
 
 ## Install Lambda into AWS

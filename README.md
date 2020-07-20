@@ -5,7 +5,7 @@ A template for quickly starting a new AWS lambda project.
 ## Naming
 Naming conventions:
 * for a vanilla Lambda: `lambda-<context>`
-* for a Cloudformation Transform macro: `cfn-transform-<context>`
+* for a Cloudformation Transform macro: `cfn-macro-<context>`
 * for a Cloudformation Custom Resource: `cfn-cr-<context>`
 
 ## Development

@@ -1,6 +1,5 @@
 # lambda-template
-Template for creating lambda repositories
-A template for quickly starting a new AWS lambda project.
+A github template for quickly starting a new AWS lambda project.
 
 ## Naming
 Naming conventions:
@@ -62,10 +61,32 @@ sam package --template-file .aws-sam/build/template.yaml \
 aws s3 cp .aws-sam/build/lambda-template.yaml s3://bootstrap-awss3cloudformationbucket-19qromfd235z9/lambda-template/master/
 ```
 
-## Install Lambda into AWS
-Create the following [sceptre](https://github.com/Sceptre/sceptre) file
+## Publish Lambda
 
+### Private access
+Publishing the lambda makes it available in your AWS account.  It is accessible in
+the [serverless application repository](https://console.aws.amazon.com/serverlessrepo).
+
+```shell script
+sam publish --template .aws-sam/build/lambda-template.yaml
+```
+
+### Public access
+Making the lambda publicly accessible makes it available in the
+[global AWS serverless application repository](https://serverlessrepo.aws.amazon.com/applications)
+
+```shell script
+aws serverlessrepo put-application-policy \
+  --application-id <lambda ARN> \
+  --statements Principals=*,Actions=Deploy
+```
+
+## Install Lambda into AWS
+
+### Sceptre
+Create the following [sceptre](https://github.com/Sceptre/sceptre) file
 config/prod/lambda-template.yaml
+
 ```yaml
 template_path: "remote/lambda-template.yaml"
 stack_name: "lambda-template"
@@ -83,6 +104,13 @@ Install the lambda using sceptre:
 sceptre --var "profile=my-profile" --var "region=us-east-1" launch prod/lambda-template.yaml
 ```
 
-## Author
+### AWS Console
+Steps to deploy from AWS console.
 
-Your Name Here.
+1. Login to AWS
+2. Access the
+[serverless application repository](https://console.aws.amazon.com/serverlessrepo)
+-> Available Applications
+3. Select application to install
+4. Enter Application settings
+5. Click Deploy

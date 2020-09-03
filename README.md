@@ -1,5 +1,5 @@
 # lambda-template
-A github template for quickly starting a new AWS lambda project.
+A GitHub template for quickly starting a new AWS lambda project.
 
 ## Naming
 Naming conventions:
@@ -64,7 +64,7 @@ aws s3 cp .aws-sam/build/lambda-template.yaml s3://bootstrap-awss3cloudformation
 ## Publish Lambda
 
 ### Private access
-Publishing the lambda makes it available in your AWS account.  It is accessible in
+Publishing the lambda makes it available in your AWS account.  It will be accessible in
 the [serverless application repository](https://console.aws.amazon.com/serverlessrepo).
 
 ```shell script
@@ -96,7 +96,7 @@ stack_tags:
   OwnerEmail: "it@sagebase.org"
 hooks:
   before_launch:
-    - !cmd "curl https://s3.amazonaws.com/bootstrap-awss3cloudformationbucket-19qromfd235z9/lambda-template/master/lambda-template.yaml --create-dirs -o templates/remote/lambda-template.yaml"
+    - !cmd "curl https://bootstrap-awss3cloudformationbucket-19qromfd235z9.s3.amazonaws.com/lambda-template/master/lambda-template.yaml --create-dirs -o templates/remote/lambda-template.yaml"
 ```
 
 Install the lambda using sceptre:

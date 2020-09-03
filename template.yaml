@@ -3,6 +3,20 @@ Transform: AWS::Serverless-2016-10-31
 Description: >
   Hello World lambda
 
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: "lambda-template"
+    Description: "A GH template for quickly starting a new AWS lambda project."
+    Author: "zaro0508"
+    SpdxLicenseId: "Apache-2.0"
+    # paths are relative to .aws-sam/build directory
+    LicenseUrl: "LICENSE"
+    ReadmeUrl: "README.md"
+    Labels: ["serverless", "template", "github", "quick-start"]
+    HomePageUrl: "https://github.com/Sage-Bionetworks-IT/lambda-template"
+    SemanticVersion: "master"
+    SourceCodeUrl: "https://github.com/Sage-Bionetworks-IT/lambda-template/tree/master"
+
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:

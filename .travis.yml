@@ -7,7 +7,7 @@ env:
     - PIPENV_IGNORE_VIRTUALENVS=1
     - SAM_CLI_TELEMETRY=0
     - AWS_DEFAULT_REGION="us-east-1"
-    - AWS_ROLE_ARN="{$AwsCfServiceRoleArn}"
+    - AWS_ROLE_ARN="${AwsCfServiceRoleArn}"
     - AWS_ACCESS_KEY_ID="${AwsCfServiceRoleArn}"
     - AWS_SECRET_ACCESS_KEY="${AwsTravisSecretAccessKey}"
 install:

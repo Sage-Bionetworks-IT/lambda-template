@@ -4,6 +4,7 @@ cache: pip
 env:
   - REPO_NAME="${PWD##*/}"
 install:
+  - export PIPENV_IGNORE_VIRTUALENVS=1
   - pip install pipenv
   - pipenv install --dev
   - wget https://github.com/Sage-Bionetworks/infra-utils/archive/master.zip -O /tmp/infra-utils.zip

@@ -7,15 +7,15 @@ Metadata:
   AWS::ServerlessRepo::Application:
     Name: "lambda-template"
     Description: "A GH template for quickly starting a new AWS lambda project."
-    Author: "zaro0508"
+    Author: "Sage-Bionetworks"
     SpdxLicenseId: "Apache-2.0"
     # paths are relative to .aws-sam/build directory
     LicenseUrl: "LICENSE"
     ReadmeUrl: "README.md"
     Labels: ["serverless", "template", "github", "quick-start"]
     HomePageUrl: "https://github.com/Sage-Bionetworks-IT/lambda-template"
-    SemanticVersion: "master"
-    SourceCodeUrl: "https://github.com/Sage-Bionetworks-IT/lambda-template/tree/master"
+    SemanticVersion: "0.0.1"
+    SourceCodeUrl: "https://github.com/Sage-Bionetworks-IT/lambda-template/tree/0.0.1"
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:

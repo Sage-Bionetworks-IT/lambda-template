@@ -4,14 +4,15 @@ cache: pip
 env:
   global:
     - REPO_NAME="${PWD##*/}"
+    - PIPENV_IGNORE_VIRTUALENVS=1
+    - SAM_CLI_TELEMETRY=0
 install:
-  - export PIPENV_IGNORE_VIRTUALENVS=1
-  - export SAM_CLI_TELEMETRY=0
+  - pip install pipenv
+  - pipenv install --dev
+before_script:
   - mkdir -p ~/.aws
   - echo -e "[default]\nregion=us-east-1\nsource_profile=default\nrole_arn=$AwsCfServiceRoleArn" > ~/.aws/config
   - echo -e "[default]\nregion=us-east-1\naws_access_key_id=$AwsTravisAccessKey\naws_secret_access_key=$AwsTravisSecretAccessKey" > ~/.aws/credentials
-  - pip install pipenv
-  - pipenv install --dev
 stages:
   - name: validate
   - name: deploy

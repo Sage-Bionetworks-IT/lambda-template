@@ -5,12 +5,12 @@ env:
   global:
     - REPO_NAME="${PWD##*/}"
 install:
-  - PIPENV_IGNORE_VIRTUALENVS=1
-  - SAM_CLI_TELEMETRY=0
-  - AWS_DEFAULT_REGION="us-east-1"
-  - AWS_ROLE_ARN=$AwsCfServiceRoleArn
-  - AWS_ACCESS_KEY_ID=$AwsTravisAccessKey
-  - AWS_SECRET_ACCESS_KEY=$AwsTravisSecretAccessKey
+  - export PIPENV_IGNORE_VIRTUALENVS=1
+  - export SAM_CLI_TELEMETRY=0
+  - export AWS_DEFAULT_REGION="us-east-1"
+  - export AWS_ROLE_ARN=$AwsCfServiceRoleArn
+  - export AWS_ACCESS_KEY_ID=$AwsTravisAccessKey
+  - export AWS_SECRET_ACCESS_KEY=$AwsTravisSecretAccessKey
   - pip install pipenv
   - pipenv install --dev
 stages:

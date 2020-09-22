@@ -45,9 +45,11 @@ $ sam local invoke HelloWorldFunction --event events/event.json
 ## Deployment
 
 ### Deploy Lambda to S3
-This requires the correct permissions to upload to bucket
+Deployments are sent to the
+[Sage cloudformation repository](https://bootstrap-awss3cloudformationbucket-19qromfd235z9.s3.amazonaws.com/index.html)
+which requires permissions to upload to Sage
 `bootstrap-awss3cloudformationbucket-19qromfd235z9` and
-`essentials-awss3lambdaartifactsbucket-x29ftznj6pqw`
+`essentials-awss3lambdaartifactsbucket-x29ftznj6pqw` buckets.
 
 ```shell script
 sam package --template-file .aws-sam/build/template.yaml \

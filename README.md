@@ -23,13 +23,7 @@ the [pre-commit](https://pre-commit.com/) git hook.
 ### Create a local build
 
 ```shell script
-$ sam build --use-container
-```
-
-### Run locally
-
-```shell script
-$ sam local invoke HelloWorldFunction --event events/event.json
+$ sam build
 ```
 
 ### Run unit tests
@@ -40,13 +34,15 @@ Tests are defined in the `tests` folder in this project. Use PIP to install the
 $ python -m pytest tests/ -v
 ```
 
-## Deployment
-
-### Build
+### Run integration tests
+Running integration tests
+[requires docker](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-start-api.html)
 
 ```shell script
-sam build
+$ sam local invoke HelloWorldFunction --event events/event.json
 ```
+
+## Deployment
 
 ## Deploy Lambda to S3
 This requires the correct permissions to upload to bucket

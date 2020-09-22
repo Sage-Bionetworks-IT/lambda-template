@@ -112,3 +112,10 @@ Steps to deploy from AWS console.
 3. Select application to install
 4. Enter Application settings
 5. Click Deploy
+
+## Releasing
+
+We have setup our CI to automate a releases.  To kick off the process just create
+a tag (i.e 0.0.1) and push to the repo.  The tag must be the same number as the current
+version in [template.yaml](template.yaml).  Our CI will do the work of deploying and publishing
+the lambda.

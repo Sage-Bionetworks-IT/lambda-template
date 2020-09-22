@@ -44,7 +44,7 @@ $ sam local invoke HelloWorldFunction --event events/event.json
 
 ## Deployment
 
-## Deploy Lambda to S3
+### Deploy Lambda to S3
 This requires the correct permissions to upload to bucket
 `bootstrap-awss3cloudformationbucket-19qromfd235z9` and
 `essentials-awss3lambdaartifactsbucket-x29ftznj6pqw`

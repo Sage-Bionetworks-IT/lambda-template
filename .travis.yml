@@ -19,7 +19,7 @@ before_script:
 stages:
   - name: validate
   - name: deploy
-    if: (tag =~ SEMVER_REGEX) OR (branch = master AND type = push)
+    if: (tag =~ $SEMVER_REGEX) OR (branch = master AND type = push)
 jobs:
   fast_finish: true
   include:

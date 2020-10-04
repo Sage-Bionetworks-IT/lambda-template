@@ -14,8 +14,8 @@ Metadata:
     ReadmeUrl: "README.md"
     Labels: ["serverless", "template", "github", "quick-start"]
     HomePageUrl: "https://github.com/Sage-Bionetworks-IT/lambda-template"
-    SemanticVersion: "0.0.2"
-    SourceCodeUrl: "https://github.com/Sage-Bionetworks-IT/lambda-template/tree/0.0.2"
+    SemanticVersion: "0.0.3"
+    SourceCodeUrl: "https://github.com/Sage-Bionetworks-IT/lambda-template/tree/0.0.3"
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:

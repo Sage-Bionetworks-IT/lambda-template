@@ -3,12 +3,19 @@ python: 3.7
 cache: pip
 env:
   global:
+    - PWD=$(pwd)
     - REPO_NAME="${PWD##*/}"
     - PIPENV_IGNORE_VIRTUALENVS=1
     - SAM_CLI_TELEMETRY=0
     - LAMBDA_BUCKET="essentials-awss3lambdaartifactsbucket-x29ftznj6pqw"
     - CFN_BUCKET="bootstrap-awss3cloudformationbucket-19qromfd235z9"
 install:
+  - mkdir -p /tmp/awscliv2
+  - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2/awscliv2.zip"
+  - pushd /tmp/awscliv2 && unzip ./awscliv2.zip && sudo ./aws/install && popd
+  - mkdir -p /tmp/awssamcli
+  - curl -L "https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip" -o "/tmp/awssamcli/awssamcli.zip"
+  - pushd /tmp/awssamcli && unzip ./awssamcli.zip && sudo ./install && popd
   - pip install pipenv
   - pipenv install --dev
 before_script:

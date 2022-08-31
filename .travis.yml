@@ -1,5 +1,5 @@
 language: python
-python: 3.7
+python: 3.9
 cache: pip
 env:
   global:
@@ -37,6 +37,7 @@ jobs:
     - stage: deploy
       script:
         - pipenv run sam build
+        - pipenv run sam validate
         - |
           pipenv run sam package --template-file .aws-sam/build/template.yaml \
             --s3-bucket $LAMBDA_BUCKET \

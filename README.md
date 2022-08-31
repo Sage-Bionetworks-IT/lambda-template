@@ -86,15 +86,14 @@ Create the following [sceptre](https://github.com/Sceptre/sceptre) file
 config/prod/lambda-template.yaml
 
 ```yaml
-template_path: "remote/lambda-template.yaml"
+template:
+  type: http
+  url: "https://PUBLISH_BUCKET.s3.amazonaws.com/lambda-template/VERSION/lambda-template.yaml"
 stack_name: "lambda-template"
 stack_tags:
   Department: "Platform"
   Project: "Infrastructure"
   OwnerEmail: "it@sagebase.org"
-hooks:
-  before_launch:
-    - !cmd "curl https://bootstrap-awss3cloudformationbucket-19qromfd235z9.s3.amazonaws.com/lambda-template/master/lambda-template.yaml --create-dirs -o templates/remote/lambda-template.yaml"
 ```
 
 Install the lambda using sceptre:

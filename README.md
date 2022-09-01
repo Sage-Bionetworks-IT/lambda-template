@@ -12,13 +12,30 @@ Naming conventions:
 ### Contributions
 Contributions are welcome.
 
-### Requirements
+### Install Requirements
 Run `pipenv install --dev` to install both production and development
 requirements, and `pipenv shell` to activate the virtual environment. For more
 information see the [pipenv docs](https://pipenv.pypa.io/en/latest/).
 
 After activating the virtual environment, run `pre-commit install` to install
 the [pre-commit](https://pre-commit.com/) git hook.
+
+### Update Requirements
+First, make any needed updates to the base requirements in `Pipfile`,
+then use `pipenv` to regenerate both `Pipfile.lock` and
+`requirements.txt`. We use `pipenv` to control versions in testing,
+but `sam` relies on `requirements.txt` directly for building the
+container used by the lambda.
+
+```shell script
+$ pipenv update
+$ pipenv requirements > requirements.txt
+```
+
+Additionally, `pre-commit` manages its own requirements.
+```shell script
+$ pre-commit autoupdate
+```
 
 ### Create a local build
 

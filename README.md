@@ -12,6 +12,17 @@ Naming conventions:
 ### Contributions
 Contributions are welcome.
 
+### Setup Development Environment
+
+Install the following applications:
+* [AWS CLI](https://github.com/aws/aws-cli)
+* [AWS SAM CLI](https://github.com/aws/aws-sam-cli)
+* [pre-commit](https://github.com/pre-commit/pre-commit)
+* [pipenv](https://github.com/pypa/pipenv)
+
+Check in [.travis.yml](./.travis.yml) to see how they are installed for this
+repo.
+
 ### Install Requirements
 Run `pipenv install --dev` to install both production and development
 requirements, and `pipenv shell` to activate the virtual environment. For more

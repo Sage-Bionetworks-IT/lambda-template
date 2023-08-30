@@ -1,0 +1,47 @@
+name: lambda-deploy
+
+on:
+  push:
+    branches: [ 'master' ]
+    tags: [ 'v?[0-9]+\.[0-9]+\.[0-9]+' ]
+
+concurrency:
+  group: ${{ github.workflow }}
+
+jobs:
+  lambda-lint:
+    uses: "./.github/workflows/lint.yaml"
+
+  package-and-publish:
+    runs-on: ubuntu-latest
+    needs: lambda-lint
+    permissions:
+      id-token: write
+    env:
+      BOOTSTRAP_BUCKET: bootstrap-awss3cloudformationbucket-19qromfd235z9
+      ESSENTIALS_BUCKET: essentials-awss3lambdaartifactsbucket-x29ftznj6pqw
+    steps:
+      - uses: actions/checkout@v3
+      - uses: aws-actions/setup-sam@v2
+        with:
+          use-installer: true
+
+      # use a lambda-like docker container to build the lambda artifact
+      - run: sam build --use-container
+
+      # authenticate with AWS via OIDC
+      - uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-region: us-east-1
+          role-to-assume: arn:aws:iam::745159704268:role/sagebase-github-oidc-lambda-template-deploy-sageit
+          role-session-name: GitHubActions-${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ github.run_id }}
+          role-duration-seconds: 900
+
+      # validating the artifact requires aws authentication
+      - run: sam validate --lint
+
+      # upload the lambda artifact to s3 and generate a cloudformation template referencing it
+      - run: sam package --template-file .aws-sam/build/template.yaml --s3-bucket $ESSENTIALS_BUCKET --s3-prefix ${{ github.event.repository.name }}/${{ github.ref_name }} --output-template-file .aws-sam/build/${{ github.event.repository.name }}.yaml
+
+      # upload the generated cloudformation template to s3
+      - run: aws s3 cp .aws-sam/build/${{ github.event.repository.name }}.yaml s3://$BOOTSTRAP_BUCKET/${{ github.event.repository.name }}/${{ github.ref_name }}

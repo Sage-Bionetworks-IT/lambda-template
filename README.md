@@ -20,8 +20,8 @@ Install the following applications:
 * [pre-commit](https://github.com/pre-commit/pre-commit)
 * [pipenv](https://github.com/pypa/pipenv)
 
-Check in [.travis.yml](./.travis.yml) to see how they are installed for this
-repo.
+Check in [.github/workflows/lint.yaml](.github/workflows/lint.yaml) to see how
+they are installed for automated testing.
 
 ### Install Requirements
 Run `pipenv install --dev` to install both production and development
@@ -39,8 +39,8 @@ but `sam` relies on `requirements.txt` directly for building the
 container used by the lambda.
 
 ```shell script
-$ pipenv update
-$ pipenv requirements > requirements.txt
+$ pipenv update --dev
+$ pipenv requirements --exclude-markers > requirements.txt
 ```
 
 Additionally, `pre-commit` manages its own requirements.

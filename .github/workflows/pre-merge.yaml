@@ -1,0 +1,8 @@
+name: lambda-test
+
+on:
+  pull_request:
+
+jobs:
+  lambda-lint:
+    uses: "./.github/workflows/lint.yaml"

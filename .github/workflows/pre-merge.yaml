@@ -1,8 +1,9 @@
-name: lambda-test
+name: pre-merge
 
 on:
+  # Run on open pull requests
   pull_request:
 
 jobs:
-  lambda-lint:
-    uses: "./.github/workflows/lint.yaml"
+  lambda-test:
+    uses: "./.github/workflows/test.yaml"

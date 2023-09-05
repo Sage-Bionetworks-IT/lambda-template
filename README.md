@@ -20,9 +20,6 @@ Install the following applications:
 * [pre-commit](https://github.com/pre-commit/pre-commit)
 * [pipenv](https://github.com/pypa/pipenv)
 
-Check in [.github/workflows/lint.yaml](.github/workflows/lint.yaml) to see how
-they are installed for automated testing.
-
 ### Install Requirements
 Run `pipenv install --dev` to install both production and development
 requirements, and `pipenv shell` to activate the virtual environment. For more
@@ -40,7 +37,14 @@ container used by the lambda.
 
 ```shell script
 $ pipenv update --dev
-$ pipenv requirements --exclude-markers > requirements.txt
+```
+
+We use `pipenv` to control versions in testing, but `sam` relies on
+`requirements.txt` directly for building the lambda artifact, so we dynamically
+generate `requirements.txt` from `Pipfile.lock` before building the artifact.
+
+```shell script
+$ pipenv requirements > requirements.txt
 ```
 
 Additionally, `pre-commit` manages its own requirements.

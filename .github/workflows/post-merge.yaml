@@ -39,4 +39,4 @@ jobs:
       - run: sam package --template-file .aws-sam/build/template.yaml --s3-bucket $ESSENTIALS_BUCKET --s3-prefix ${{ github.event.repository.name }}/${{ github.ref_name }} --output-template-file .aws-sam/build/${{ github.event.repository.name }}.yaml
 
       # upload the generated cloudformation template to s3
-      - run: aws s3 cp .aws-sam/build/${{ github.event.repository.name }}.yaml s3://$BOOTSTRAP_BUCKET/${{ github.event.repository.name }}/${{ github.ref_name }}
+      - run: aws s3 cp .aws-sam/build/${{ github.event.repository.name }}.yaml s3://$BOOTSTRAP_BUCKET/${{ github.event.repository.name }}/${{ github.ref_name }}/

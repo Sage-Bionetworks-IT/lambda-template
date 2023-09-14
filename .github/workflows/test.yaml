@@ -32,5 +32,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/sam-build
+      - uses: ./.github/actions/sam-build.yaml
       - run: sam validate --lint

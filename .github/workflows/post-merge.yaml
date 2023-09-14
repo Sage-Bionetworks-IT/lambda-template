@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v3
 
       # Install sam-cli and run "sam build"
-      - uses: ./.github/actions/sam-build
+      - uses: ./.github/actions/sam-build.yaml
 
       # authenticate with AWS via OIDC
       - uses: aws-actions/configure-aws-credentials@v3

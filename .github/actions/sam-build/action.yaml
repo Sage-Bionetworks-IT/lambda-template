@@ -6,12 +6,12 @@ runs:
   using: "composite"
   steps:
     # Convert Pipfile.lock to requirements.txt for sam
-    - uses: actions/setup-python@v4
+    - uses: VaultVulp/action-pipenv@v2.0.1
       with:
-        python-version: 3.9
-    - run: pip install -U pipenv
-      shell: bash
-    - run: pipenv requirements > requirements.txt
+        command: requirements > requirements.txt
+
+    # Print requirements for debugging
+    - run: cat requirements.txt
       shell: bash
 
     # Install aws-sam-cli

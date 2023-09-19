@@ -33,4 +33,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/sam-build
-      - run: sam validate --lint
+      - run: sam validate --lint --template .aws-sam/build/template.yaml

@@ -32,7 +32,7 @@ jobs:
         with:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::745159704268:role/sagebase-github-oidc-lambda-template-deploy-sageit
-          role-session-name: GitHubActions-${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ github.run_id }}
+          role-session-name: GitHubActions-${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ github.run_id }}  # Must not exceed 64 chars
           role-duration-seconds: 900
 
       # upload the lambda artifact to s3 and generate a cloudformation template referencing it

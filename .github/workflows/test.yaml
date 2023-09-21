@@ -26,7 +26,9 @@ jobs:
           python-version: 3.9
       - run: pip install -U pipenv
       - run: pipenv install --dev
-      - run: pipenv run python3 -m pytest tests/ -vv
+      - run: pipenv run coverage run -m pytest tests/ -vv
+      - name: upload coverage to coveralls
+        uses: coverallsapp/github-action@v2
 
   sam-build-and-lint:
     runs-on: ubuntu-latest

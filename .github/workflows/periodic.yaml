@@ -1,0 +1,10 @@
+name: periodic
+
+on:
+  # Run once a month
+  schedule:
+    - cron: '30 16 15 * *'  # 16:30 UTC (9:30 PST) on the 15th of the month
+
+jobs:
+  lambda-test:
+    uses: "./.github/workflows/test.yaml"

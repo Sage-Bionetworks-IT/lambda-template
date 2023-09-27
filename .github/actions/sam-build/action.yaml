@@ -11,6 +11,8 @@ runs:
         python-version: 3.9
     - run: pip install -U pipenv
       shell: bash
+
+    # This needs to be in the 'CodeUri' directory
     - run: pipenv requirements > requirements.txt
       shell: bash
 

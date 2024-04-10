@@ -22,13 +22,13 @@ jobs:
       BOOTSTRAP_BUCKET: bootstrap-awss3cloudformationbucket-19qromfd235z9
       ESSENTIALS_BUCKET: essentials-awss3lambdaartifactsbucket-x29ftznj6pqw
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Install sam-cli and run "sam build"
       - uses: ./.github/actions/sam-build
 
       # authenticate with AWS via OIDC
-      - uses: aws-actions/configure-aws-credentials@v3
+      - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::745159704268:role/sagebase-github-oidc-lambda-template-deploy-sageit

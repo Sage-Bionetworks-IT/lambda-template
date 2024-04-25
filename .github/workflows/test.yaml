@@ -29,6 +29,8 @@ jobs:
       - run: pipenv run coverage run -m pytest tests/ -vv
       - name: upload coverage to coveralls
         uses: coverallsapp/github-action@v2
+        with:
+          fail-on-error: false
 
   sam-build-and-lint:
     runs-on: ubuntu-latest

@@ -13,7 +13,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: 3.12
       - uses: pre-commit/action@v3.0.1
 
   pytest:
@@ -23,13 +23,15 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: 3.12
       - run: pip install -U pipenv
-      - run: pipenv install --dev
-      - run: pipenv run coverage run -m pytest tests/ -vv
+      - run: pipenv sync --dev
+      - run: pipenv run coverage run -m pytest tests/ -svv
+      - run: pipenv run coverage lcov
       - name: upload coverage to coveralls
         uses: coverallsapp/github-action@v2
         with:
+          file: coverage.lcov
           fail-on-error: false
 
   sam-build-and-lint:

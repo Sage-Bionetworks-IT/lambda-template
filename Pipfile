@@ -13,4 +13,4 @@ coverage = "~=7.3"
 crhelper = "~=2.0"
 
 [requires]
-python_version = "3.9"
+python_version = "3.12"

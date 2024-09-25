@@ -21,7 +21,7 @@ Install the following applications:
 * [pipenv](https://github.com/pypa/pipenv)
 
 ### Install Requirements
-Run `pipenv install --dev` to install both production and development
+Run `pipenv sync --dev` to install both production and development
 requirements, and `pipenv shell` to activate the virtual environment. For more
 information see the [pipenv docs](https://pipenv.pypa.io/en/latest/).
 
@@ -65,7 +65,7 @@ managed with `pipenv`. Install the development dependencies and run the tests
 using `coverage`.
 
 ```shell script
-$ pipenv run coverage run -m pytest tests/ -vv
+$ pipenv run coverage run -m pytest tests/ -svv
 ```
 
 Automated testing will upload coverage results to [Coveralls](coveralls.io).

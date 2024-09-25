@@ -28,7 +28,7 @@ Resources:
     Properties:
       CodeUri: .
       Handler: hello_world/app.lambda_handler
-      Runtime: python3.9
+      Runtime: python3.12
       Role: !GetAtt FunctionRole.Arn
       Events:
         HelloWorld:

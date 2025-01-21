@@ -1,9 +1,9 @@
 name: post-merge
 
 on:
-  # Run on merges to master or tag pushes
+  # Run on merges to main or tag pushes
   push:
-    branches: [ 'master' ]
+    branches: [ 'main' ]
     tags: [ '*' ]
 
 concurrency:

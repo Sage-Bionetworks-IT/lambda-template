@@ -13,11 +13,11 @@ repos:
     -   id: trailing-whitespace
     -   id: check-ast
 -   repo: https://github.com/adrienverge/yamllint
-    rev: v1.35.1
+    rev: v1.37.0
     hooks:
     -   id: yamllint
 -   repo: https://github.com/awslabs/cfn-python-lint
-    rev: v1.27.0
+    rev: v1.32.4
     hooks:
     -   id: cfn-python-lint
         files: template\.(json|yml|yaml)$
@@ -26,6 +26,6 @@ repos:
     hooks:
     -   id: remove-tabs
 -   repo: https://github.com/aristanetworks/j2lint.git
-    rev: v1.1.0
+    rev: v1.2.0
     hooks:
       - id: j2lint

@@ -1,12 +1,27 @@
 version: 2
+
+# Docs:
+# https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference
+# https://docs.github.com/en/code-security/tutorials/secure-your-dependencies/optimizing-pr-creation-version-updates
+
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "monthly"
     open-pull-requests-limit: 0  # Only security updates
+    groups:
+      all-security:
+        applies-to: security-updates
+        patterns:
+          - '*'  # Group everything into a single PR
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "monthly"
     open-pull-requests-limit: 0  # Only security updates
+    groups:
+      all-security:
+        applies-to: security-updates
+        patterns:
+          - '*'  # Group everything into a single PR

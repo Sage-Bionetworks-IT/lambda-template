@@ -7,8 +7,6 @@ version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
-    schedule:
-      interval: "monthly"
     open-pull-requests-limit: 0  # Only security updates
     groups:
       all-security:
@@ -17,8 +15,6 @@ updates:
           - '*'  # Group everything into a single PR
   - package-ecosystem: "pip"
     directory: "/"
-    schedule:
-      interval: "monthly"
     open-pull-requests-limit: 0  # Only security updates
     groups:
       all-security:
